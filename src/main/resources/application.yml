@@ -1,0 +1,20 @@
+greeting:
+  message: "hello"
+quarkus:
+  kafka-streams:
+    bootstrap-servers: localhost:9092
+    topics: prices
+
+mp:
+  messaging:
+    outgoing:
+      generated-price:
+        connector: smallrye-kafka
+        topic: prices
+        value:
+          serializer: org.apache.kafka.common.serialization.LongSerializer
+    incoming:
+      prices:
+        connector: smallrye-kafka
+        value:
+          deserialiser: org.apache.kafka.common.serializaion.LongDeserializer
